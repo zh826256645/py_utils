@@ -2,6 +2,7 @@
 """
 init MongoDB
 """
+from typing import Optional
 
 from pymongo.mongo_client import MongoClient
 
@@ -14,10 +15,10 @@ class MongoConfig(ConfigBase):
     def __init__(
         self,
         host: str = "127.0.0.1",
-        port: int = "27017",
-        username: str = None,
-        password: str = None,
-        uri: str = None,
+        port: int = 27017,
+        username: Optional[str] = None,
+        password: Optional[str] = None,
+        uri: Optional[str] = None,
     ) -> None:
         """init setting
 
@@ -43,7 +44,7 @@ class MongoConfig(ConfigBase):
     def init_ext(self) -> MongoClient:
         self.build_uri()
 
-        client = MongoClient(self.uri)
+        client: MongoClient = MongoClient(self.uri)
         return client
 
 

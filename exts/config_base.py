@@ -2,14 +2,12 @@
 """
 Config 基类
 """
+from typing import List
 from typing_extensions import Self
 
 
 class ConfigBase:
-    KEYS = []
-
-    def __init__(self) -> None:
-        self.keys = []
+    KEYS: List[str] = []
 
     def load_config(self, config: dict) -> Self:
         """导入配置

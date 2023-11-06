@@ -2,6 +2,7 @@
 """
 Redis 组件初始化
 """
+from typing import Optional
 
 import redis
 
@@ -16,10 +17,10 @@ class RedisConfig(ConfigBase):
         host: str = "127.0.0.1",
         port: int = 6379,
         db: int = 0,
-        protocol: int = None,
-        username: str = None,
-        password: str = None,
-        url: str = None,
+        protocol: Optional[int] = None,
+        username: Optional[str] = None,
+        password: Optional[str] = None,
+        url: Optional[str] = None,
     ) -> None:
         """init
 

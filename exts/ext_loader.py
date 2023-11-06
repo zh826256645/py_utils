@@ -2,6 +2,7 @@
 """
 从配置文件注册组件
 """
+from typing import Optional
 from configparser import ConfigParser
 
 from exts.config_base import ConfigBase
@@ -20,12 +21,12 @@ class Exts(dict):
 
 class ExtLoader:
     def __init__(
-        self, config_path: str = "config.cfg", name_ext_config: dict = None
+        self, config_path: str = "config.cfg", name_ext_config: Optional[dict] = None
     ) -> None:
         self.config_path = config_path
         self.exts = Exts()
 
-        self.config: ConfigParser = {}
+        self.config: Optional[ConfigParser] = None
         self.load_config()
 
         self._name_ext_config = {
@@ -36,7 +37,7 @@ class ExtLoader:
         if name_ext_config:
             self._name_ext_config.update(name_ext_config)
 
-    def get_ext_config(self, name: str) -> type[ConfigBase]:
+    def get_ext_config(self, name: str) -> Optional[type[ConfigBase]]:
         """获取组件配置类
 
         :param str name: 配置名

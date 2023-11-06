@@ -4,6 +4,7 @@ Instruction
 """
 import sys
 import logging
+from typing import Optional
 
 from exts.config_base import ConfigBase
 
@@ -13,9 +14,9 @@ class LogConfig(ConfigBase):
 
     def __init__(
         self,
-        file_name: str = None,
-        base_path: str = None,
-        path: str = None,
+        file_name: Optional[str] = None,
+        base_path: Optional[str] = None,
+        path: str = "",
         debug: bool = False,
         fmt: str = "%(asctime)s - %(levelname)s: %(message)s",
         date_fmt: str = "%Y-%m-%d %H:%M:%S %p",
