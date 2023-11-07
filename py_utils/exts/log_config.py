@@ -6,7 +6,7 @@ import sys
 import logging
 from typing import Optional
 
-from exts.config_base import ConfigBase
+from py_utils.exts.config_base import ConfigBase
 
 
 class LogConfig(ConfigBase):

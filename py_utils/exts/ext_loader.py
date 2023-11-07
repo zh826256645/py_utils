@@ -5,10 +5,10 @@
 from typing import Optional
 from configparser import ConfigParser
 
-from exts.config_base import ConfigBase
-from exts.mongo_config import MongoConfig
-from exts.redis_config import RedisConfig
-from exts.log_config import LogConfig
+from py_utils.exts.config_base import ConfigBase
+from py_utils.exts.mongo_config import MongoConfig
+from py_utils.exts.redis_config import RedisConfig
+from py_utils.exts.log_config import LogConfig
 
 
 class Exts(dict):
@@ -44,7 +44,7 @@ class ExtLoader:
         :return ConfigBase: 配置类
         """
         for key, ext_config in self._name_ext_config.items():
-            if name.startswith(key):
+            if name.endswith(key):
                 return ext_config
         return None
 

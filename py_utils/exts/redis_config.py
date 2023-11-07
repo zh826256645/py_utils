@@ -6,7 +6,7 @@ from typing import Optional
 
 import redis
 
-from exts.config_base import ConfigBase
+from py_utils.exts.config_base import ConfigBase
 
 
 class RedisConfig(ConfigBase):

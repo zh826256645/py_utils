@@ -6,7 +6,7 @@ from typing import Optional
 
 from pymongo.mongo_client import MongoClient
 
-from exts.config_base import ConfigBase
+from py_utils.exts.config_base import ConfigBase
 
 
 class MongoConfig(ConfigBase):
@@ -37,13 +37,14 @@ class MongoConfig(ConfigBase):
     def build_uri(self):
         if not self.uri:
             if self.password and self.username:
-                self.uri = f"mongodb://{self.username}:{self.password}@{self.host}:{self.port}?authSource=admin"
+                self.uri = f"mongodb://{self.username}:{self.password}@{self.host}:{self.port}/?authSource=admin"
             else:
                 self.uri = f"mongodb://{self.host}:{self.port}"
 
     def init_ext(self) -> MongoClient:
         self.build_uri()
 
+        print(self.uri)
         client: MongoClient = MongoClient(self.uri)
         return client
 
