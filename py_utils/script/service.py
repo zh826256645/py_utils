@@ -14,8 +14,10 @@ from py_utils.exts.log_config import LogConfig
 
 
 class Service(metaclass=ABCMeta):
-    def __init__(self, config_path: str = "config.cfg"):
-        self.ext_loader = ExtLoader(config_path=config_path)
+    _DEFAULT_CONFIG_PATH = "config.cfg"
+
+    def __init__(self):
+        self.ext_loader = ExtLoader(config_path=self._DEFAULT_CONFIG_PATH)
         self.ext_loader.load_exts()
 
         self.mongo: Optional[MongoClient] = self.ext_loader.exts.get("mongo")
@@ -25,15 +27,15 @@ class Service(metaclass=ABCMeta):
         )
 
     @classmethod
-    def run_forever(cls, config_path: str = "config.cfg"):
-        _service = cls(config_path)
+    def run_forever(cls):
+        _service = cls()
         _service.log.info("program start:")
         while True:
             _service.main()
 
     @classmethod
-    def run(cls, config_path: str = "config.cfg"):
-        _service = cls(config_path)
+    def run(cls):
+        _service = cls()
         _service.log.info("program start:")
         _service.main()
 

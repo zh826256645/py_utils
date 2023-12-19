@@ -2,7 +2,7 @@
 """
 Config 基类
 """
-from typing import List
+from typing import List, Any
 from typing_extensions import Self
 
 
@@ -20,5 +20,5 @@ class ConfigBase:
                 setattr(self, key, config[key])
         return self
 
-    def init_ext(self):
+    def init_ext(self) -> Any:
         pass

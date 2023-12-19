@@ -2,7 +2,7 @@
 """
 从配置文件注册组件
 """
-from typing import Optional
+from typing import Optional, Dict, Any
 from configparser import ConfigParser
 
 from py_utils.exts.config_base import ConfigBase
@@ -24,7 +24,7 @@ class ExtLoader:
         self, config_path: str = "config.cfg", name_ext_config: Optional[dict] = None
     ) -> None:
         self.config_path = config_path
-        self.exts = Exts()
+        self.exts: Dict[str, Any] = Exts()
 
         self.config: Optional[ConfigParser] = None
         self.load_config()
