@@ -31,3 +31,6 @@ class Task:
 
     def __bool__(self):
         return bool(self.value)
+
+    def get_data(self) -> dict:
+        return {key: value for key, value in self.__dict__.items() if value}
