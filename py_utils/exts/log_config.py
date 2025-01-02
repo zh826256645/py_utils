@@ -2,8 +2,8 @@
 """
 Instruction
 """
-import sys
 import logging
+import sys
 from typing import Optional
 
 from py_utils.exts.config_base import ConfigBase
